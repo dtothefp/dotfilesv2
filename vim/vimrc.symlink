@@ -117,6 +117,9 @@ call vundle#rc()
   set listchars+=precedes:< " The character to show in the last column when wrap is
                             " off and the line continues beyond the right of the screen
 
+  " Fix for tmux background color easing
+  set t_ut=
+
 " }
 
 " Formatting {
