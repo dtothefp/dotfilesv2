@@ -24,6 +24,8 @@
   excludesfile = ~/.gitignore
   editor = vim
 	precomposeunicode = true
+[push]
+  default = current
 [apply]
   whitespace = nowarn
 [github]

@@ -16,6 +16,6 @@ else
 fi
 
 alias genctags='ctags -R --sort=yes --verbose --languages=+PHP,-JavaScript --exclude=@$HOME/.ctags.exclude'
-alias vim='TERM=xterm vim'
+alias vim='TERM=xterm-256color vim'
 alias vi='vim'
 alias tmux='TERM=screen-256color-bce tmux'
