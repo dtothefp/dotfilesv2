@@ -1,0 +1,24 @@
+#!/bin/sh
+
+echo "Setting up vim"
+
+# Backup existing .vim stuff
+echo "backing up current vim config"
+today=`date +%Y%m%d`
+for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
+
+if [ ! -d $HOME/.vim/bundle ]; then
+  mkdir -p $HOME/.vim/bundle
+fi
+if [ ! -e $HOME/.vim/bundle/vundle ]; then
+  echo "Installing Vundle"
+  git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+fi
+
+echo "update/install plugins using Vundle"
+system_shell=$SHELL
+export SHELL="/bin/sh"
+vim +BundleInstall! +BundleClean +qall
+export SHELL=$system_shell
+echo ''
+echo '  All installed!'
