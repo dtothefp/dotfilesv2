@@ -6,6 +6,9 @@ vimrc = $(HOME)/.vimrc
 bin_dir = /usr/local/bin
 brew = $(bin_dir)/brew
 tmux = $(bin_dir)/tmux
+ctags = $(bin_dir)/ctags
+
+ctags: $(ctags)
 
 vimbundles: $(vimrc) $(vundle)
 	vim +BundleInstall! +BundleClean +qall
@@ -33,3 +36,6 @@ $(brew):
 
 $(tmux): $(brew) reattach-to-user-namespace
 	brew install tmux
+
+$(ctags):
+	brew install ctags-exuberant
