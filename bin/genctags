@@ -6,7 +6,7 @@ fi
 
 loc=$1
 if [ -z $loc ]; then
-  loc="${PWd}"
+  loc="${PWD}"
 fi
 
-ctags -R $loc --sort=yes --languages=+Python,+JavaScript --verbose=yes $exclude
+ctags -R $loc --sort=yes --python-kinds=-iv --languages=+Python,+JavaScript --verbose=yes $exclude

@@ -30,7 +30,8 @@ call vundle#rc()
   Bundle 'godlygeek/tabular'
   Bundle "pangloss/vim-javascript"
   Bundle 'scrooloose/nerdtree'
-  Bundle 'mattn/zencoding-vim'
+  Bundle 'mattn/emmet-vim'
+  Bundle 'klen/python-mode.git'
 
 " General
 
@@ -126,9 +127,9 @@ call vundle#rc()
 
   set nowrap                      " Wrap long lines
   set autoindent                  " Indent at the same level of the previous line
-  set shiftwidth=2                " Use indents of 4 spaces
+  set shiftwidth=2                " Use indents of 2 spaces
   set expandtab                   " Tabs are spaces, not tabs
-  set tabstop=2                   " An indentation every four columns
+  set tabstop=2                   " An indentation every two columns
   set softtabstop=2               " Let backspace delete indent
   "set matchpairs+=<:>             " Match, to be used with %
   set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
@@ -140,10 +141,10 @@ call vundle#rc()
   let mapleader = ','
 
   " Easier moving in tabs and windows
-  map <C-J> <C-W>j<C-W>_
-  map <C-K> <C-W>k<C-W>_
-  map <C-L> <C-W>l<C-W>_
-  map <C-H> <C-W>h<C-W>_
+  map <C-J> <C-W>j
+  map <C-K> <C-W>k
+  map <C-L> <C-W>l
+  map <C-H> <C-W>h
 
   " Wrapped lines goes down/up to next row, rather than next line in file.
   nnoremap j gj
@@ -214,6 +215,11 @@ call vundle#rc()
 " }
 
 "-------------------------------------------------------------------------------
+" FileType Settings
+"-------------------------------------------------------------------------------
+autocmd FileType python setlocal sw=2 ts=2 sts=2 tw=79 expandtab wrap
+
+"-------------------------------------------------------------------------------
 " Plugin Settings
 "-------------------------------------------------------------------------------
 " delimitMat
@@ -222,6 +228,16 @@ let delimitMate_smart_quotes = 0
 
 " Powerline
 let g:Powerline_symbols='fancy'
+
+
+" Python-Mode
+" Don't autofold code
+let g:pymode_folding = 0
+let g:pymode_lint_checkers = ['pep8']
+let g:pymode_lint_ignore = ['E111']
+let g:pymode_lint_signs = 0
+let g:pymode_trim_whitespaces = 0
+let g:pymode_lint = 0
 
 " CtrlP
 let g:ctrlp_switch_buffer = 0
@@ -242,6 +258,7 @@ let g:ctrlp_user_command = {
 
 " NerdTree shortcut
 nnoremap <leader>d :NERDTreeToggle<cr>
+let NERDTreeIgnore = ['\.pyc$']
 
 " Tabularize {
   nmap <Leader>a& :Tabularize /&<CR>
@@ -270,8 +287,7 @@ nnoremap <leader>d :NERDTreeToggle<cr>
 "}
 
 " zencoding {
-  let g:user_zen_leader_key = '<c-g>'
-  let g:use_zen_complete_tag = 1
+  let g:user_emmet_leader_key = '<c-g>'
 " }
 
 " Tabline modifications
